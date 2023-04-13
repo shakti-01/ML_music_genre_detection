@@ -2,10 +2,8 @@ from flask import Flask, jsonify, redirect
 from flask import request
 import os
 from flask_cors import CORS, cross_origin
-import pickle
 import numpy as np
 import tensorflow as tf
-import joblib
 
 app = Flask(__name__)
 CORS(app)

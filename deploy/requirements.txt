@@ -1,0 +1,5 @@
+flask
+react
+tensorflow
+numpy
+flask_cors
