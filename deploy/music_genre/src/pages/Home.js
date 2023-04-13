@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState,useRef, useEffect } from 'react'
 
 function Home() {
   const [file, setFile] = useState(null);
+  const result_genre = useRef();
+  useEffect(() => {
+    result_genre.current.innerText = "Please select a file to upload";
+  });
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (file == null) {
@@ -21,7 +25,8 @@ function Home() {
       alert("Give valid audio file");
     }
     else {
-      alert('nice')
+      // alert('Your genre is '+res.genre)
+      result_genre.current.innerText = "This belongs to "+res.genre;
     }
   }
   const onChange = (e) => {
@@ -33,12 +38,12 @@ function Home() {
       <hr />
       <div className='home-main'>
         <form onSubmit={handleSubmit} encType='multipart/form-data'>
-          <input type='file' onChange={onChange} />
+          <input type='file' onChange={onChange} accept="audio/wav"/>
           <br />
           <button type='submit'>Find genre</button>
         </form>
         <br />
-        <div className='result'>This belongs to hip-hop</div>
+        <div className='result' ref={result_genre}>This belongs to hip-hop</div>
       </div>
     </div>
   )
