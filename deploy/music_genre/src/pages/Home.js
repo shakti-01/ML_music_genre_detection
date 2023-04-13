@@ -14,6 +14,7 @@ function Home() {
     }
     const data = new FormData();
     data.append('audio-file', file);
+    result_genre.current.innerText = "PLEASE WAIT ... MODEL IS PROCESSING";
     const response = await fetch('http://localhost:5000/upload', {
       method: 'POST',
       body: data
@@ -22,10 +23,10 @@ function Home() {
     console.log(res);
 
     if (!res.success) {
+      result_genre.current.innerText = "error...";
       alert("Give valid audio file");
     }
     else {
-      // alert('Your genre is '+res.genre)
       result_genre.current.innerText = "This belongs to "+res.genre;
     }
   }
@@ -43,7 +44,7 @@ function Home() {
           <button type='submit'>Find genre</button>
         </form>
         <br />
-        <div className='result' ref={result_genre}>This belongs to hip-hop</div>
+        <div className='result' ref={result_genre}>blank</div>
       </div>
     </div>
   )
