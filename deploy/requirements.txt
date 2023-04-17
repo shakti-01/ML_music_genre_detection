@@ -1,6 +1,0 @@
-react
-flask
-tensorflow
-numpy
-flask_cors
-librosa
