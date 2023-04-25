@@ -27,7 +27,8 @@ function Home() {
       alert("Give valid audio file");
     }
     else {
-      result_genre.current.innerText = "This belongs to "+res.genre;
+      result_genre.current.innerText = "This belongs to "+res.genre+"\nthis is predicted with a confidence of "+res.confidence;
+      
     }
   }
   const onChange = (e) => {
