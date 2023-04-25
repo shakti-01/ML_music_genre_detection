@@ -67,15 +67,17 @@ def upload():
         
         # Load the model from the file
         
-        #x = np.random.uniform(-130.5,130.6,size=(130,13))
-        #print(x.shape)
-        #prediction=loaded_model.predict(x.reshape(1,130,13))
+        
         print(f"target path = {target}")
         mfcc = getMFCC(target)
         print(mfcc.shape)
         prediction = loaded_model.predict(mfcc)
+        
         predicted_index=np.argmax(prediction, axis=1)
         print(f'prediction={prediction}')
+
+        data['confidence']=prediction[0][predicted_index[0]]*100.0
+        print('predicted with: {:.4f}'.format(data['confidence']))
         pgenre = genre[predicted_index[0]]
         print(pgenre)
         os.remove(target)
